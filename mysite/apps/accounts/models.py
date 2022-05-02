@@ -21,3 +21,4 @@ class UserProfile(models.Model):
   # test user details
   bio = models.CharField(max_length=500, blank=True, null=True)
   website = models.URLField(max_length=200, blank=True, null=True)
+  persona = models.ForeignKey(UserPersona, on_delete=models.SET_NULL, blank=True, null=True)
