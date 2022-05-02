@@ -121,6 +121,6 @@ STATIC_URL = "/static/"
 ALLOWED_HOSTS = ["*"]
 X_FRAME_OPTIONS = "*"
 
-LOGIN_URL = "acconts/login"
+LOGIN_URL = "accounts/login"
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
