@@ -1,19 +1,38 @@
-<nav>
-  {% url 'index' as index_url %}
-  <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>
-  {% url 'about' as about_url %}
-  <span>{% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</span>
-  {% url 'contact' as contact_url %}
-  <span>{% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</span> 
-  <span style="float:right"> 
+{% load static %}
+<link rel="stylesheet" type="text/css" href= "{% static 'css/nav.css' %}">
+
+ <nav class="navbar navbar-fixed-top nav-style">
+  <div class="container-fluid nav-style">
+    <div class="navbar-header nav-style">
+      <img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">
+    </div>
+    
+    <ul class="nav navbar-default navbar-nav navbar-expand nav-style links">
+      <li  style="padding-right: 20%;" class="nav-style"> {% url 'index' as index_url %}
+  {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
+      <li style="padding-right: 20%;"  class="nav-style"> {% url 'about' as about_url %}
+  {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
+      <li style="padding-right: 20%;"  class="nav-style">{% url 'contact' as contact_url %}
+  {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %} </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right navbar-expand nav-style links">
+      <li class="nav-style"> 
     {% if user.is_authenticated %}
       {% url 'profile' as profile_url %}    
-      <span>{% if request.path == profile_url %}Hi {{ user.username }} 
-        {% else %}Hi <a href="{% url 'profile' %}">{{ user.username }}</a>
-        {% endif %} </span>
-      <span><a href="{% url 'logout' %}">Logout</a></span>
+      <span  class="nav-style">{% if request.path == profile_url %}Hi {{ user.username }} 
+        {% else %}Hi <a href="{% url 'profile' %}" >{{ user.username }}</a>
+        {% endif %} </span></li>
+      <span><a href="{% url 'logout' %}" class="nav-style">Logout</a></span>
     {% else %}
-      <span><a href="{% url 'login' %}">Login</a></span>
+
+      {% url 'register' as register_url %}
+      <li  class="nav-style"><span  class="nav-style">{% if request.path == register_url %}Sign Up{% else %}<a href="{% url 'register' %}" class="nav-style">Sign Up</a></li></span>{% endif %}
+      {% url 'login' as login_url %} 
+      <span class="nav-style">{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}" >Login</a>{% endif %}</span>
     {% endif %}
   </span>
-</nav>
+        </li>
+    </ul>
+  </div>
+</nav> 

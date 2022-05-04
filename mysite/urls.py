@@ -17,6 +17,8 @@ from django.contrib import admin
 from . import views
 from django.urls import path
 from django.contrib.auth import views as authviews
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,4 +33,7 @@ urlpatterns = [
         name="login",
     ),
     path("accounts/logout", authviews.LogoutView.as_view(), name="logout"),
-]
+    path("accounts/register", views.register, name="register")
+] 
+
+#urlpatterns += staticfiles_urlpatterns()
