@@ -1,5 +1,5 @@
-Django Renu Test Web Application
+Renu Enactus Django Web Application
 
-made for learning Django / possible Enactus use
+made for learning Django 
 
 by Niamh Gowran and Kevin Tomescu

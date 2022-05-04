@@ -11,4 +11,9 @@
 .links a{
     text-decoration: none;
     color:white;
+   font-size: 1.5rem;
+}
+
+.links {
+  font-size: 1.5rem;
 }

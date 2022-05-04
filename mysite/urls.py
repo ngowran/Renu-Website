@@ -36,4 +36,3 @@ urlpatterns = [
     path("accounts/register", views.register, name="register")
 ] 
 
-#urlpatterns += staticfiles_urlpatterns()
