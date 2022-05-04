@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from . import views
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as authviews
 from django.conf.urls.static import static
 from django.conf import settings
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,12 +28,10 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("accounts/profile", views.ProfileView.as_view(), name="profile"),
     # Django login authentication
-    path(
-        "accounts/login",
-        authviews.LoginView.as_view(template_name="accounts/login.html"),
-        name="login",
-    ),
-    path("accounts/logout", authviews.LogoutView.as_view(), name="logout"),
-    path("accounts/register", views.register, name="register")
+    path("accounts/login", views.login, name="login"),
+    path("postlogin/", views.postlogin),
+    path("logout/", views.logout, name="log"),
+    path("accounts/register", views.register, name="register"),
+    path("postregister/", views.postregister),
 ] 
 

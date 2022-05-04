@@ -18,12 +18,9 @@
 
     <ul class="nav navbar-nav navbar-right navbar-expand nav-style links">
       <li class="nav-style"> 
-    {% if user.is_authenticated %}
+    {% if request.session.uid %}
       {% url 'profile' as profile_url %}    
-      <span  class="nav-style">{% if request.path == profile_url %}Hi {{ user.username }} 
-        {% else %}Hi <a href="{% url 'profile' %}" >{{ user.username }}</a>
-        {% endif %} </span></li>
-      <span><a href="{% url 'logout' %}" class="nav-style">Logout</a></span>
+      <span><ul class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></li></span>
     {% else %}
 
       {% url 'register' as register_url %}
