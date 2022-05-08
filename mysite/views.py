@@ -44,14 +44,18 @@ def postreset(request):
     try:
         authe.send_password_reset_email(email)
         message  = "A email to reset your password has been successfully sent."
-        return render(request, "accounts/reset.html", {"message":message})
+        return redirect('login', {"message":message})
     except:
         message  = "Something went wrong, please check the email you provided is correct."
         return render(request, "accounts/reset.html", {"messsage":message})
 
 def profile(request):
-  sensor_data = database.child('Renu').child('Key1').get().val()
-  return render(request, "accounts/profile.html", {"data":sensor_data})
+  if request.session['uid']:
+    sensor_data = database.child('Renu').child('Key1').get().val()
+    return render(request, "accounts/profile.html", {"data":sensor_data})
+  else:
+    message = "Sorry, you're not signed in"
+    return redirect('login', {"message":message})
 
 def login(request):
     return render(request, "accounts/login.html")
