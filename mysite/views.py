@@ -36,6 +36,19 @@ def about(request):
 def contact(request):
     return render(request, "contact.html")
 
+def reset(request):
+  return render(request, "accounts/reset.html")
+
+def postreset(request):
+    email = request.POST.get('email')
+    try:
+        authe.send_password_reset_email(email)
+        message  = "A email to reset your password has been successfully sent."
+        return render(request, "accounts/reset.html", {"message":message})
+    except:
+        message  = "Something went wrong, please check the email you provided is correct."
+        return render(request, "accounts/reset.html", {"messsage":message})
+
 def profile(request):
   sensor_data = database.child('Renu').child('Key1').get().val()
   return render(request, "accounts/profile.html", {"data":sensor_data})

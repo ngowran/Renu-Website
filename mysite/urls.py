@@ -33,5 +33,7 @@ urlpatterns = [
     path("logout/", views.logout, name="log"),
     path("accounts/register", views.register, name="register"),
     path("postregister/", views.postregister),
+    path('accounts/reset', views.reset, name="reset"),
+    path('postreset/', views.postreset),
 ] 
 
