@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
@@ -35,6 +36,9 @@ def about(request):
 def contact(request):
     return render(request, "contact.html")
 
+def profile(request):
+  return render(request, "accounts/profile.html")
+
 def login(request):
     return render(request, "accounts/login.html")
 
@@ -47,9 +51,10 @@ def postlogin(request):
     except:
         message="Invalid login! Please check your input."
         return render(request,"accounts/login.html",{"message":message})
+    request.session["email"] = email
     session_id=user['idToken']
     request.session['uid']=str(session_id)
-    return render(request,"index.html")
+    return redirect('index')
 
 def logout(request):
     try:
@@ -68,11 +73,16 @@ def postregister(request):
     try:
         # creating a user with the given email and password
         user = authe.create_user_with_email_and_password(email,passs)
-        uid = user['localId']
-        idtoken = request.session['uid']
+        data = {
+                "name": name, 
+                "email": email,
+                "status": 1
+            }
+        results = database.child("users").push(data, user['idToken'])
+        return redirect('login')
     except:
-        return render(request, "accounts/register.html")
-    return render(request,"accounts/login.html")
+        message ='Signup failed. Make sure email is unique and password is minimum 6 characters long.'
+        return render(request, "accounts/register.html", {'message':message})
 
-class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = "accounts/profile.html"
+#class ProfileView(LoginRequiredMixin, TemplateView):
+ #   template_name = "accounts/profile.html"

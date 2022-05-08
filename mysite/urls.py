@@ -26,7 +26,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("about", views.about, name="about"),
     path("contact", views.contact, name="contact"),
-    path("accounts/profile", views.ProfileView.as_view(), name="profile"),
+    path("accounts/profile", views.profile, name="profile"),
     # Django login authentication
     path("accounts/login", views.login, name="login"),
     path("postlogin/", views.postlogin),

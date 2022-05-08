@@ -13,8 +13,14 @@
 <body>
   {% include 'navbar.html' %}
   <main>
+    {% if message %}
+<script>
+	alert('{{ message }}');
+</script>
+{% endif %}
     {% block content %}
     {% endblock %}
+     {% include 'footer.html' %}
   </main>
 </body>
 </html>

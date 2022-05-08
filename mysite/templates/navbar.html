@@ -1,14 +1,15 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href= "{% static 'css/nav.css' %}">
 
- <nav class="navbar navbar-fixed-top nav-style">
+ <nav class="navbar nav-style">
   <div class="container-fluid nav-style">
     <div class="navbar-header nav-style">
-      <img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">
+       {% url 'index' as index_url %}
+  {% if request.path == index_url %}<img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">{% else %}<a href="{% url 'index' %}" ><img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;"></a>{% endif %}
     </div>
     
     <ul class="nav navbar-default navbar-nav navbar-expand nav-style links">
-      <li  style="padding-right: 20%;" class="nav-style"> {% url 'index' as index_url %}
+      <li style="padding-right: 20%;" class="nav-style"> {% url 'index' as index_url %}
   {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
       <li style="padding-right: 20%;"  class="nav-style"> {% url 'about' as about_url %}
   {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
@@ -20,6 +21,7 @@
       <li class="nav-style"> 
     {% if request.session.uid %}
       {% url 'profile' as profile_url %}    
+      <span><ul class="nav=style"><a href="{% url 'profile' %}">Profile</a></ul>
       <span><ul class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></li></span>
     {% else %}
 
