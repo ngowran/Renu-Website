@@ -37,7 +37,8 @@ def contact(request):
     return render(request, "contact.html")
 
 def profile(request):
-  return render(request, "accounts/profile.html")
+  sensor_data = database.child('Renu').child('Key1').get().val()
+  return render(request, "accounts/profile.html", {"data":sensor_data})
 
 def login(request):
     return render(request, "accounts/login.html")
