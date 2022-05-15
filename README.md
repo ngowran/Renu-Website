@@ -2,6 +2,8 @@ Renu -- DCU Enactus Project -- Full Stack Django Web Application
 
 Made for learning Django - using Google Firebase DB, Auth 
 
-by Niamh Gowran and Kevin Tomescu.
+By Niamh Gowran and Kevin Tomescu.
 
-check [requirements](https://github.com/kmanjt/Renu-Django/blob/main/requirements.txt)
+Check [requirements](https://github.com/kmanjt/Renu-Django/blob/main/requirements.txt)
+
+To see our site: [Click here](https://Renu-Website.kevintomescu.repl.co)
