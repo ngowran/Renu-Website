@@ -52,6 +52,7 @@ def postreset(request):
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('Renu').child('Key1').get().val()
+    
     return render(request, "accounts/profile.html", {"data":sensor_data})
   else:
     message = "Sorry, you're not signed in"
@@ -106,3 +107,23 @@ def postregister(request):
 
 #class ProfileView(LoginRequiredMixin, TemplateView):
  #   template_name = "accounts/profile.html"
+
+
+def postcontact(request):
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    subject = request.POST.get('subject')
+    message = request.POST.get('message')
+    try:
+      contact_data = {
+        "name": name,
+        "email": email,
+        "subject": subject,
+        "message": message
+      }
+      contact = database.child("contact").push(contact_data)
+    except:
+      message = "Failed to send. Please try again."
+      return render(request, "contact.html", {'message':message})
+    message = "Thank you for contacting Renu."
+    return render(request, 'index.html', {"message":message})
