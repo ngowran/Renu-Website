@@ -43,7 +43,7 @@ def postreset(request):
     email = request.POST.get('email')
     try:
         authe.send_password_reset_email(email)
-        message  = "A email to reset your password has been successfully sent."
+        message  = "An email to reset your password has been successfully sent."
         return redirect('login', {"message":message})
     except:
         message  = "Something went wrong, please check the email you provided is correct."
@@ -55,7 +55,7 @@ def profile(request):
     return render(request, "accounts/profile.html", {"data":sensor_data})
   else:
     message = "Sorry, you're not signed in"
-    return redirect('login', {"message":message})
+    return render(request, 'login', {"message":message})
 
 def login(request):
     return render(request, "accounts/login.html")
@@ -72,14 +72,16 @@ def postlogin(request):
     request.session["email"] = email
     session_id=user['idToken']
     request.session['uid']=str(session_id)
-    return redirect('index')
+    message = 'Signed in.'
+    return render(request, 'index.html', {"message":message})
 
 def logout(request):
     try:
         del request.session['uid']
     except:
         pass
-    return render(request, "accounts/login.html")
+    message = 'Logged out.'
+    return render(request, "index.html", {"message":message})
 
 def register(request):
     return render(request, "accounts/register.html")
