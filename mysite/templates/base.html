@@ -19,14 +19,14 @@
 </script>
 {% endif %}
     {% block content %}
-    {% endblock %}
-    <!--{% include 'footer.html' %} -->
-  </main>
-
-  <div id="main">
+      <div id="main">
     <div id="app">
     </div>
     </div>
+    {% endblock %}
+  {% include 'footer.html' %} 
+  </main>
+
 
     <script src="{% static "frontend/main.js" %}"></script>
 </body>
