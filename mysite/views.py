@@ -114,7 +114,7 @@ def postcontact(request):
     email = request.POST.get('email')
     subject = request.POST.get('subject')
     message = request.POST.get('message')
-    try:
+    if len(email) > 0 and len(name) > 0 and len(subject) > 0:
       contact_data = {
         "name": name,
         "email": email,
@@ -122,8 +122,8 @@ def postcontact(request):
         "message": message
       }
       contact = database.child("contact").push(contact_data)
-    except:
-      message = "Failed to send. Please try again."
+      message = "Thank you for contacting Renu."
+      return render(request, 'index.html', {"message":message})
+    else:  
+      message = "Sorry, that email is incorrect. Please try again."
       return render(request, "contact.html", {'message':message})
-    message = "Thank you for contacting Renu."
-    return render(request, 'index.html', {"message":message})

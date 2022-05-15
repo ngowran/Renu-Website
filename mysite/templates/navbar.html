@@ -3,7 +3,7 @@
 
  <nav class="navbar nav-style">
   <div class="container-fluid nav-style">
-    <div class="navbar-header nav-style">
+    <div class="navbar-header nav-style ">
        {% url 'index' as index_url %}
   {% if request.path == index_url %}<img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">{% else %}<a href="{% url 'index' %}" ><img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;"></a>{% endif %}
     </div>
