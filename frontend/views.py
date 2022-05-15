@@ -4,3 +4,9 @@ from django.shortcuts import render
 
 def index(request, *args, **kwargs):
   return render(request, 'frontend/index.html')
+
+def about(request):
+    return render(request, "about.html")
+
+def contact(request):
+    return render(request, "contact.html")

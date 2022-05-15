@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import About from "./About";
+import Contact from "./Contact";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -6,7 +8,7 @@ export default class HomePage extends Component {
   }
 
   render() {
-    return <h1>Homepage</h1>;
+    return ( <h1>Homepage</h1>);
   }
 }
 
