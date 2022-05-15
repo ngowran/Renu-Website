@@ -23,7 +23,7 @@ authe = firebase.auth()
 database=firebase.database()
 
 
-def index(request):
+def index(request, *args, **kwargs):
     print(request.user)
     test1 = database.child('Renu').child('Key1').get().val()
     return render(request, "index.html", {"test":test1})
