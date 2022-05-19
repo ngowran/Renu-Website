@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href= "{% static 'css/accounts.css' %}"
 <section class=" mb-4 container">
 <form action="/postregister/" method="post">
 	{% csrf_token %}

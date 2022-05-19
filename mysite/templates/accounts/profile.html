@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
-{% block title %}Renu Profile{% endblock %}
+{% block title %}ReNu Profile{% endblock %}
 
 {% block content %}
-<h1>
-{{ request.session.email }}'s Profile Page <br><br>
-</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<h3>
-Sensor Data: {{data}}
-</h3>
+<center><h1>
+{{ request.session.email }}'s Profile Page <br><br>
+</h1></center>
+
+<div id="refresh-this-div">
+<h3> Sensor Data </h3>
+<div id="sensor">
+<ul id="display-data"> {{data}}</ul>
+</div>
+<button class="btn btn-primary" onclick='refresh()'>Update Sensor Data</button>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function refresh() {
+        $.ajax({
+                type: "GET",
+                url: "{% url 'sensordata' %}",
+                success: function(data) {
+                    $('#display-data').text('{{data}}');
+                }
+        });
+    };
+</script>
 {% endblock %}

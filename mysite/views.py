@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.views.generic.base import TemplateView
@@ -32,6 +32,9 @@ def index(request):
 def about(request):
     return render(request, "about.html")
 
+def sensor_data(request):
+  sensor_data = database.child('Renu').child('Key 0').get().val()
+  return render(request, "accounts/profile.html", {"data":sensor_data})
 
 def contact(request):
     return render(request, "contact.html")
@@ -51,12 +54,12 @@ def postreset(request):
 
 def profile(request):
   if request.session['uid']:
-    sensor_data = database.child('Renu').child('Key1').get().val()
-    
+    sensor_data = database.child('Renu').child('Key 0').get().val()
     return render(request, "accounts/profile.html", {"data":sensor_data})
   else:
     message = "Sorry, you're not signed in"
     return render(request, 'login', {"message":message})
+
 
 def login(request):
     return render(request, "accounts/login.html")
@@ -114,7 +117,7 @@ def postcontact(request):
     email = request.POST.get('email')
     subject = request.POST.get('subject')
     message = request.POST.get('message')
-    if len(email) > 0 and len(name) > 0 and len(subject) > 0:
+    try:
       contact_data = {
         "name": name,
         "email": email,
@@ -122,8 +125,8 @@ def postcontact(request):
         "message": message
       }
       contact = database.child("contact").push(contact_data)
-      message = "Thank you for contacting Renu."
-      return render(request, 'index.html', {"message":message})
-    else:  
+    except:  
       message = "Sorry, that email is incorrect. Please try again."
       return render(request, "contact.html", {'message':message})
+    message = "Thank you for contacting Renu."
+    return render(request, 'index.html', {"message":message})
