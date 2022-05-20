@@ -9,20 +9,24 @@
     </div>
     
     <ul class="nav navbar-default navbar-nav navbar-expand nav-style links">
+      
       <li style="padding-right: 20%;" class="nav-style"> {% url 'index' as index_url %}
   {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
+      
       <li style="padding-right: 20%;"  class="nav-style"> {% url 'about' as about_url %}
   {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
-      <li style="padding-right: 20%;"  class="nav-style">{% url 'contact' as contact_url %}
-  {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %} </li>
+      
+      <li class="nav-style">{% url 'contact' as contact_url %}
+  {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</li>
+      
     </ul>
 
     <ul class="nav navbar-nav navbar-right navbar-expand nav-style links">
       <li class="nav-style"> 
     {% if request.session.uid %}
       {% url 'profile' as profile_url %}    
-      <span><ul class="nav=style"><a href="{% url 'profile' %}">Profile</a></ul>
-      <span><ul class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></li></span>
+      <span><ul class="nav-style">{% if request.path == profile_url %}Profile{% else %}<a href="{% url 'profile' %}">Profile</a>{% endif %}</ul>
+      <span><ul class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></ul></span>
     {% else %}
 
       {% url 'register' as register_url %}

@@ -3,33 +3,52 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href= "{% static 'css/accounts.css' %}"
-<section class=" mb-4 container">
+<link rel="stylesheet" type="text/css" href= "{% static 'css/accounts.css' %}">
+
+<div class="container p-3">
+  <h1>Sign Up</h1>
+  <p>Please fill in this form</p>
 <form action="/postregister/" method="post">
 	{% csrf_token %}
 	<br/>
-	<h1>Sign Up</h1>
-	
-
-<p>Please fill in this form</p>
+  <div class="form-row">
+  <div class="form-group col-md-4 mt-2">
+	<!-- Name: -->
 	<label for="username">Username</label>
-	<input type="name" id="Username" name="name" placeholder="Your Name"><br><br>
+	<input class="form-control form-control-sm" type="name" id="Username" name="name" placeholder="Your Name">
+  </div>
+  <div class="form-group col-md-4 mt-2">
 	<!-- Email: -->
 	<label for="Email" >Email</label>
-	<input type="email" id="Email" name="email" placeholder="Your Email"><br><br>
+	<input class="form-control form-control-sm" type="email" id="Email" name="email" placeholder="Your Email">
+  </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-4 mt-2">
 	<!-- Password: -->
 	<label for="Password">Password</label>
-	<input type="password" id="Password" name="pass" placeholder="Password"><br><br>
+	<input  class="form-control form-control-sm" type="password" id="Password" name="pass" placeholder="Password">
+  </div>
+
+  <div class="form-group col-md-4 mt-2">
 	<!-- RepeatPassword: -->
 	<label for="confirm_password">Confirm Password</label>
-	<input type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password"><br><br>
+	<input  class="form-control form-control-sm" type="password" id="confirm_password" name="pass-repeat" placeholder=" Repeat Password">
+  </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4 mt-2">
 	<label>
 	<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
 	</label>
-	
-	<input type="submit" value="register"><br><br>
-
+    </div>
+	<div class="form-group col-md-4 mt-2">
+	<input class="btn btn-success" type="submit" value="Register">
+  </div>
+</div>
 </form>
-</section>
+</div>
 
 {% endblock %}
