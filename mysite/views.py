@@ -47,7 +47,7 @@ def postreset(request):
     try:
         authe.send_password_reset_email(email)
         message  = "An email to reset your password has been successfully sent."
-        return redirect('login', {"message":message})
+        return render(request, 'accounts/login.html', {"message":message})
     except:
         message  = "Something went wrong, please check the email you provided is correct."
         return render(request, "accounts/reset.html", {"messsage":message})

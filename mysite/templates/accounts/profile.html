@@ -7,17 +7,47 @@
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<center><h1>
+<div class="container text-center p-4"><h1>
 {{ request.session.email }}'s Profile Page <br><br>
-</h1></center>
+</h1></div>
 
-<div id="refresh-this-div">
-<h3> Sensor Data </h3>
+<div id="refresh-this-div" class="container text-center p-4">
+<h3> Your Compost Pile's Data </h3>
 <div id="sensor">
 <ul id="display-data"> {{data}}</ul>
 </div>
 <button class="btn btn-primary" onclick='refresh()'>Update Sensor Data</button>
 </div>
+<br><br><br>
+<div class="container text-center">
+  <h1>What This Data Means</h1>
+  <br>
+  <p>These values of temperature and humidity are vital for aerobic bacteria growth. This bacteria is what turns your food waste into compost. The conditions must be just right for efficient compost production.</p>
+  <br>
+  <div class="row">
+    <div class="col-md-6 p-2">
+      <h3 style=" text-decoration: underline;">Temp  </h3>
+      <ul style="text-align: left;">
+        <li>Healthy temperature of your compost depends on the age of your pile.</li> 
+        <li>After a week, the temperature should rise to 60-70 degrees.</li> 
+        <li>If this drops dramatically, to around 40 degrees, it means the pile is running out of oxygen. Preventing aerobic bacteria growth.</li> 
+        <li> To solve this, you must turn your compost pile, to increase the oxygen count and raise the temperature.</li>
+        <li>After 6 months to a year, once your compost starts to resemble soil, the temperature should cool down to 20 degrees. This tells you your compost is mature and ready to use.
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6 p-2">
+      <h3 style=" text-decoration: underline;">Humidty </h3>
+      <ul  style="text-align: left;">
+        <li>Composting is most efficent between 40 - 60 % moisture content.</li>
+        <li>Low mositure levels reduce oxygen levels in your compost, slowing aerobic bacteria growth.</li>
+        <li>If your mositure level drops below 50% its time to rehydrate your compost.</li>
+         <li>Along side our sensor you can also feel your compost. If it feels dry to touch its also time to rehydrate.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br><br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 function refresh() {
