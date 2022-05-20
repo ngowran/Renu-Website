@@ -33,8 +33,8 @@ def about(request):
     return render(request, "about.html")
 
 def sensor_data(request):
-  sensor_data = database.child('Renu').child('Key 0').get().val()
-  return render(request, "accounts/profile.html", {"data":sensor_data})
+  sensor_data = database.child('sensor').child('Key 1').get().val()
+  return JsonResponse({"data":sensor_data})
 
 def contact(request):
     return render(request, "contact.html")
@@ -54,7 +54,7 @@ def postreset(request):
 
 def profile(request):
   if request.session['uid']:
-    sensor_data = database.child('Renu').child('Key 0').get().val()
+    sensor_data = database.child('sensor').child('Key 1').get().val()
     return render(request, "accounts/profile.html", {"data":sensor_data})
   else:
     message = "Sorry, you're not signed in"
