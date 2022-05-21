@@ -26,3 +26,8 @@
   border-radius: 8px;
   font-size: 1.5rem;
 }
+
+.bigger:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

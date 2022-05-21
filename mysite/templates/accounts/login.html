@@ -16,16 +16,16 @@
   <div class="form-group col-md-4 mt-2">
 <!-- Enter Your Email: --> 
 	<label for="Email"><h5>Email</h5></label>
-	<input class="form-control form-control-sm" type="email"id="Email" name="email">
+	<input class="form-control form-control-sm" type="email"id="Email" name="email" placeholder="Your Email">
   </div>
 
    <div class="form-group col-md-4 mt-2">
 <!-- Enter Your Password: -->
 	<label for="Password"><h5>Password</h5></label>
-	<input class="form-control form-control-sm" type="password" id="Password" name="pass">
+	<input class="form-control form-control-sm" type="password" id="Password" name="pass" placeholder="Your Password">
    </div>
     <div class="form-group col-md-4 mt-5">
-   <input class="btn btn-success text-center" type="submit" value="Login">
+   <input class="btn my_button text-center" type="submit" value="Login">
     </div>
  </div>
   
@@ -37,25 +37,15 @@
    </div>
     
     <div class="form-group col-md-4">
-      <p style="color: black;">Forgot Password? <button type="button" class="btn btn-success" onclick="location.href='{% url 'reset' %} '">Reset</button></p>
+      <p style="color: black;">Forgot Password? <button type="button" class="btn my_button" onclick="location.href='{% url 'reset' %} '">Reset</button></p>
     </div>
     </div>
-  
-  <div class="form-group row p-3">
-	<button class="btn btn-success" type="button" onclick="location.href='{% url 'register' %} '">Register</button>
+  <div class="form-row p-1">
+    <p>Don't Have An Account?
+	<button class="btn my_button" type="button" onclick="location.href='{% url 'register' %} '">Register</button>
+      </p>
   </div>
 </form>
 </div>
 </body>
 {% endblock %}
-
-  <div class="form-row">
-    <div class="form-group col-md-4 mt-2">
-	<label>
-	<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-	</label>
-    </div>
-	<div class="form-group col-md-4 mt-2">
-	<input class="btn btn-success" type="submit" value="Register">
-  </div>
-</div>
