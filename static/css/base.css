@@ -28,6 +28,23 @@
 }
 
 .bigger:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.make_black {
+  color: black;
+}
+
+.my_button {
+  background-color: #69a36b;
+}		
+
+.my_button:hover{
+  background-color: #5e927a;
+}
+
+.yt_vid {
+  border: 1px solid  #5e927a;
+  border-radius: 15px;
 }

@@ -2,40 +2,55 @@
 <link rel="stylesheet" type="text/css" href= "{% static 'css/nav.css' %}">
 
  <nav class="navbar nav-style">
-  <div class="container-fluid nav-style">
-    <div class="navbar-header nav-style ">
+  <div class="container-fluid nav-style  row">
+    <div class="navbar-header nav-style text-center col-lg-1">
        {% url 'index' as index_url %}
   {% if request.path == index_url %}<img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">{% else %}<a href="{% url 'index' %}" ><img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;"></a>{% endif %}
     </div>
-    
-    <ul class="nav navbar-default navbar-nav navbar-expand nav-style links">
-      
-      <li style="padding-right: 20%;" class="nav-style"> {% url 'index' as index_url %}
-  {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
-      
-      <li style="padding-right: 20%;"  class="nav-style"> {% url 'about' as about_url %}
-  {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
-      
-      <li class="nav-style">{% url 'contact' as contact_url %}
-  {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</li>
-      
-    </ul>
 
-    <ul class="nav navbar-nav navbar-right navbar-expand nav-style links">
-      <li class="nav-style"> 
+  <!--briuh whats this -->
+    <div class="col-lg-8 nav-style">
+    <ul class="nav  navbar-nav navbar-expand nav-style links">
+
+      <span class="nav-style">
+      <li class="nav-item nav-style"> {% url 'index' as index_url %}
+  {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
+      </span>
+
+      <span class="nav-style">
+      <li class="nav-item nav-style"> {% url 'about' as about_url %}
+  {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
+      </span>
+
+     
+      <li class="nav-item nav-style">{% url 'contact' as contact_url %}
+        
+  {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</li>
+   
+    </ul>
+    </div>
+  
+
+    <div class="col-lg-3 nav-style text-center">
+    <ul class="nav navbar-nav navbar-right navbar-expand nav-style links float-right">
+
     {% if request.session.uid %}
+      
+       <li class="nav-style"><span  class="nav-style">
       {% url 'profile' as profile_url %}    
-      <span><ul class="nav-style">{% if request.path == profile_url %}Profile{% else %}<a href="{% url 'profile' %}">Profile</a>{% endif %}</ul>
-      <span><ul class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></ul></span>
+    {% if request.path == profile_url %}Profile{% else %}<a href="{% url 'profile' %}">Profile</a></span>{% endif %}</li>
+      
+      <span class="nav-style"><li class="nav-style"><a href="{% url 'log' %}" class="nav-style">Logout</a></li></span>
     {% else %}
 
       {% url 'register' as register_url %}
-      <li  class="nav-style"><span  class="nav-style">{% if request.path == register_url %}Sign Up{% else %}<a href="{% url 'register' %}" class="nav-style">Sign Up</a></li></span>{% endif %}
+      <span  class="nav-style"><li  class="nav-style">{% if request.path == register_url %}Sign Up{% else %}<a href="{% url 'register' %}" >Sign Up</a>{% endif %}</li></span>
       {% url 'login' as login_url %} 
-      <span class="nav-style">{% if request.path == login_url %}Login{% else %}<a href="{% url 'login' %}" >Login</a>{% endif %}</span>
-    {% endif %}
-  </span>
+      <span class="nav-style"><li class="nav-style">{% if request.path == login_url %}Login{% else %}<a class="nav-style" href="{% url 'login' %}" >Login</a>{% endif %}</span>
+    {% endif %}</li>
+
         </li>
     </ul>
+    </div>
   </div>
 </nav> 
