@@ -48,3 +48,12 @@
   border: 1px solid  #5e927a;
   border-radius: 15px;
 }
+
+#main-style{
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}

@@ -18,15 +18,24 @@
 </script>
 </head>
 <body onload='message()'>
+  <div id="main-style">
 {% else %}
 </head>
 <body>
+  <div id="main-style">
 {% endif %}
 {% include 'navbar.html' %}
   <main>
+    
+      <div id="content-wrap">
     {% block content %}
     {% endblock %}
+     
+      <br><br><br>
   {% include 'footer.html' %} 
+      
   </main>
+    </div>
+       </div>
 </body>
 </html>

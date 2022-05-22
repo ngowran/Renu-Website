@@ -5,3 +5,10 @@
 .f-link a{
   color: black;
 }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
