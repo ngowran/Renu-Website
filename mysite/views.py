@@ -55,8 +55,8 @@ def postreset(request):
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('sensor').child('Key 1').get().val()
-    #info = authe.get_account_info(request.session['uid'])
-    return render(request, "accounts/profile.html", {"data":sensor_data})
+    info = database.child('users').child(request.session['localId']).child('name').get().val()
+    return render(request, "accounts/profile.html", {"data":sensor_data, "info":info})
   else:
     message = "Sorry, you're not signed in"
     return render(request, 'login', {"message":message})
@@ -74,6 +74,7 @@ def postlogin(request):
     except:
         message="Invalid login! Please check your input."
         return render(request,"accounts/login.html",{"message":message})
+    request.session['localId'] = user['localId']
     request.session["email"] = email
     session_id=user['idToken']
     request.session['uid']=str(session_id)
@@ -103,11 +104,11 @@ def postregister(request):
                 "email": email,
                 "status": 1
             }
-        results = database.child("users").push(data, user['idToken'])
         message = "Thank you for signing up!"
+        results = database.child("users").child(user['localId']).set(data)
         return render(request, 'accounts/login.html', {'message':message})
     except:
-        message ='Signup failed. Make sure email is unique and password is minimum 6 characters long.'
+        message = 'Signup failed. Make sure email is unique and password is minimum 6 characters long.'
         return render(request, "accounts/register.html", {'message':message})
 
 #class ProfileView(LoginRequiredMixin, TemplateView):
