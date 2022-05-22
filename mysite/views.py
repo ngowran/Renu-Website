@@ -55,6 +55,7 @@ def postreset(request):
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('sensor').child('Key 1').get().val()
+    #info = authe.get_account_info(request.session['uid'])
     return render(request, "accounts/profile.html", {"data":sensor_data})
   else:
     message = "Sorry, you're not signed in"
@@ -103,7 +104,8 @@ def postregister(request):
                 "status": 1
             }
         results = database.child("users").push(data, user['idToken'])
-        return redirect('login')
+        message = "Thank you for signing up!"
+        return render(request, 'accounts/login.html', {'message':message})
     except:
         message ='Signup failed. Make sure email is unique and password is minimum 6 characters long.'
         return render(request, "accounts/register.html", {'message':message})

@@ -7,16 +7,18 @@
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="container text-center p-4"><h1>
-{{ request.session.email }}'s Profile Page <br><br>
-</h1></div>
+<div class="container-fluid text-center p-4">
+  <h3 style="font-size:6vw;">
+{{ request.session.email }}'s Profile 
+{{info}}
+</h3></div> <br><br>
 
 <div id="refresh-this-div" class="container text-center p-4">
 <h3> Your Compost Pile's Data </h3>
 <div id="sensor">
 <ul id="display-data"> {{data}}</ul>
 </div>
-<button class="btn btn-success" onclick='refresh()'>Update Sensor Data</button>
+<button class="btn my_button" onclick='refresh()'>Update Sensor Data</button>
 </div>
 <br><br><br>
 <div class="container text-center">
