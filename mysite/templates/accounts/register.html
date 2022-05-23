@@ -5,7 +5,7 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href= "{% static 'css/accounts.css' %}">
 
-<div class="container p-3">
+<div class="container p-3 pt-5">
   <h1>Sign Up</h1>
   <p>Please fill in this form</p>
 <form action="/postregister/" method="post">
@@ -51,4 +51,9 @@
 </form>
 </div>
 
+<div class="text-center container">
+  <h6 class="float-left">
+    Already on ReNu? <a href="{% url 'login' %}">Login</a> instead.
+  </h6>
+</div>
 {% endblock %}

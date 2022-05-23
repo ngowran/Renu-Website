@@ -55,7 +55,7 @@ def postreset(request):
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('sensor').child('Key 1').get().val()
-    info = database.child('users').child(request.session['localId']).child('name').get().val()
+    info = database.child('users').child(request.session['localId']).child('username').get().val()
     return render(request, "accounts/profile.html", {"data":sensor_data, "info":info})
   else:
     message = "Sorry, you're not signed in"
@@ -100,7 +100,7 @@ def postregister(request):
         # creating a user with the given email and password
         user = authe.create_user_with_email_and_password(email,passs)
         data = {
-                "name": name, 
+                "username": name, 
                 "email": email,
                 "status": 1
             }
