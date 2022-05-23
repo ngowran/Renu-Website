@@ -5,6 +5,8 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+from django.core.mail import send_mail
+from django.conf import settings
 import pyrebase
 
 config={
@@ -127,7 +129,19 @@ def postcontact(request):
         "subject": subject,
         "message": message
       }
-      contact = database.child("contact").push(contact_data)
+      contact = database.child("contact").child(name).set(contact_data)
+      send_mail(
+            subject="[ReNu Support Team] " + subject,
+            message=f"From: {name} {email}\n\n\n{message}",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[settings.EMAIL_HOST_USER, "nsgowran@gmail.com", "kevinjamestomescu@gmail.com"]
+        )
+      send_mail(
+            subject="ReNu Ireland - Contact Confirmation",
+            message=f"Dear {name}.\nThank you for contacting ReNu Ireland.\nOur team will be back to you shortly!\n\nRegards, ReNu Ireland Support Team.",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[email]
+        )
     except:  
       message = "Sorry, that email is incorrect. Please try again."
       return render(request, "contact.html", {'message':message})
