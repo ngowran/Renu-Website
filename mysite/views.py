@@ -114,7 +114,7 @@ def postregister(request):
         return render(request, "accounts/register.html", {'message':message})
 
 #class ProfileView(LoginRequiredMixin, TemplateView):
- #   template_name = "accounts/profile.html"
+#   template_name = "accounts/profile.html"
 
 
 def postcontact(request):

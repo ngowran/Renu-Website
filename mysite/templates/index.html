@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}ReNu Home{% endblock %}
 
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href= "{% static 'css/carousel.css' %}">
 <div class="text-center container pt-5">
 
 </div>
@@ -31,7 +30,20 @@
 
   
 <div class="col-md-6 text-center p-2 m-0">
-  <img class="img-fluid" src="{% static 'images/app_home.jpg' %}" alt="apphome" style="height: 40rem; width 40rem; border-radius: 25px;">
+   <!-- slider container -->
+    <div class="slider">
+      <!-- slide 1 -->
+      <div class="slide">
+        <img class="img-fluid" src="{% static 'images/app_home.jpg' %}" alt="apphome" style="height: 40rem; width 40rem; border-radius: 25px;">
+      </div>
+       <!-- slide 2 -->
+      <div class="slide">
+        <img class="img-fluid" src="{% static 'images/app-page-1.jpg' %}" alt="apphome" style="height: 40rem; width 40rem; border-radius: 25px;">
+      </div>
+       <!-- Control buttons -->
+      <button class="bten bten-next">></button>
+      <button class="bten bten-prev"><</button>
+    </div>  
 </div>
 </div>
 
@@ -47,9 +59,7 @@ Our goal is to simplify the composting process, ultimately leading to societal c
 
 </p>
 </div>
+<script type="text/javascript" src="{% static 'js/carousel.js' %}"></script>
+
 {% endblock %}
 
-
-<!--<h3 class="title">
-  Firebase auth test (if Session ID is not empty it worked)</h3><br><br>
-  <p>Session ID: {{ request.session.uid }}</p>-->
