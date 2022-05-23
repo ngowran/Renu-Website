@@ -124,7 +124,10 @@ STATICFILES_DIRS = [
 ALLOWED_HOSTS = ["*"]
 X_FRAME_OPTIONS = "*"
 
-
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 LOGIN_URL = "accounts/login"
 LOGIN_REDIRECT_URL = "index"
