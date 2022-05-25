@@ -9,8 +9,6 @@
 
 <div class="container-fluid text-center p-4">
   <h1>
-<!-- {{ request.session.email }}'s Profile -->
-<!-- {{ request.session.user }}'s profile -->
   Welcome {{info}}.
 </h1></div> <br><br>
 
@@ -19,7 +17,7 @@
 <div id="sensor">
 <ul id="display-data"> {{data}}</ul>
 </div>
-<button class="btn my_button" onclick='refresh()'>Update Sensor Data</button>
+<button class="btn my_button active" onclick='refresh()'>Update Sensor Data</button>
 </div>
 <br><br><br>
 <div class="container text-center">
