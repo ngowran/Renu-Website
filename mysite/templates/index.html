@@ -16,14 +16,28 @@
   <br><br>
 <h3> Download soon!</h3>
   <br>
-  <p>Look out in the next few weeks to be apart of our consumer testing trial.</p>
+  <p>Sign up below to receive emails about beta testing!</p>
+  <form id="beta_test" name="beta_test" action="/postbeta/" method="post">
+  {% csrf_token %}
+  <div class="input-group pb-3">
+						<input type="text" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+						<div class="input-group-append">
+							<input class="btn my_button" type="submit" value="Sign Up" onclick="ValidateEmail(document.beta_test.email)">
+						</div>
+					</div>
+    </form>
+  <br>
 
 <div class="row container text-center">
   <div class="col-md-6 m p-2">
+    <a href="" onclick="app_alert()">
    <img src="{% static 'images/applestore.png' %}" class="img-fluid bigger" alt="apphome" style="height: 4rem; width 7rem; border-radius: 15px;">
+      </a>
   </div>
   <div class="col-md-6 p-2">
+    <a href="" onclick="app_alert()">
     <img src="{% static 'images/googleplay.png' %}" class="img-fluid bigger" alt="apphome" style="height: 4rem; width 7rem; border-radius: 15px;">
+      </a>
   </div>
 </div>
 </div>
@@ -60,6 +74,8 @@ Our goal is to simplify the composting process, ultimately leading to societal c
 </p>
 </div>
 <script type="text/javascript" src="{% static 'js/carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/form-valid.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/app_alert.js' %}"></script>
 
 {% endblock %}
 

@@ -28,6 +28,7 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("accounts/profile", views.profile, name="profile"),
     path("sensordata", views.sensor_data, name="sensordata"),
+    path('postbeta/', views.postbeta),
   
     # Django login authentication
     path("accounts/login", views.login, name="login"),

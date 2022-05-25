@@ -35,7 +35,7 @@ def about(request):
     return render(request, "about.html")
 
 def sensor_data(request):
-  sensor_data = database.child('sensor').child('Key 1').get().val()
+  sensor_data = database.child('sensor-2').child('Data').get().val()
   return JsonResponse({"data":sensor_data})
 
 def contact(request):
@@ -56,7 +56,7 @@ def postreset(request):
 
 def profile(request):
   if request.session['uid']:
-    sensor_data = database.child('sensor').child('Key 1').get().val()
+    sensor_data = database.child('sensor-2').child('Data').get().val()
     info = database.child('users').child(request.session['localId']).child('username').get().val()
     return render(request, "accounts/profile.html", {"data":sensor_data, "info":info})
   else:
@@ -116,6 +116,15 @@ def postregister(request):
 #class ProfileView(LoginRequiredMixin, TemplateView):
 #   template_name = "accounts/profile.html"
 
+def postbeta(request):
+  email = request.POST.get('email')
+  try:
+    database.child("testers").child("email").set(email)
+    message = "Thank you for signing up."
+    return render(request, "index.html", {"message":message})
+  except:
+    message = "Sorry, something went wrong!"
+    return render(request, "index.html", {"message":message})
 
 def postcontact(request):
     name = request.POST.get('name')
@@ -138,7 +147,7 @@ def postcontact(request):
         )
       send_mail(
             subject="ReNu Ireland Support - Contact Confirmation",
-            message=f"Dear {name}.\nThank you for contacting ReNu Ireland.\nOur team will be back to you shortly!\n\nRegards, ReNu Ireland Support Team.",
+            message=f"Dear {name},\nThank you for contacting ReNu Ireland.\nOur team will be back to you shortly!\n\nRegards,\n ReNu Ireland Support Team.",
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[email]
         )
