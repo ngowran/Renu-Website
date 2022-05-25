@@ -119,7 +119,7 @@ def postregister(request):
 def postbeta(request):
   email = request.POST.get('email')
   try:
-    database.child("testers").child("email").set(email)
+    database.child("testers").push(email)
     message = "Thank you for signing up."
     send_mail(
             subject="ReNu Ireland - Beta Confirmation",

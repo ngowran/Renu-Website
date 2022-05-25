@@ -58,8 +58,11 @@ $.ajax({
     type:'GET',
     success: function (data) {
       var div = document.getElementById('display-data');
-      div.innerHTML = data.data;       
-
+      if (div.innerHTML != data.data) {
+        div.innerHTML = data.data;       
+      } else {
+        alert("No change in sensor data.");
+      }
     }
   });
 }
