@@ -121,6 +121,12 @@ def postbeta(request):
   try:
     database.child("testers").child("email").set(email)
     message = "Thank you for signing up."
+    send_mail(
+            subject="ReNu Ireland - Beta Confirmation",
+            message=f"Thank you for signing up to beta test ReNu Ireland.\nWe may contact you in the future about potential testing!\n\nRegards,\nReNu Ireland Team.",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[email, "nsgowran@gmail.com"]
+        )
     return render(request, "index.html", {"message":message})
   except:
     message = "Sorry, something went wrong!"
@@ -147,7 +153,7 @@ def postcontact(request):
         )
       send_mail(
             subject="ReNu Ireland Support - Contact Confirmation",
-            message=f"Dear {name},\nThank you for contacting ReNu Ireland.\nOur team will be back to you shortly!\n\nRegards,\n ReNu Ireland Support Team.",
+            message=f"Dear {name},\nThank you for contacting ReNu Ireland.\nOur team will be back to you shortly!\n\nRegards,\nReNu Ireland Support Team.",
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[email]
         )
