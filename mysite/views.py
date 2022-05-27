@@ -108,6 +108,12 @@ def postregister(request):
             }
         message = "Thank you for signing up!"
         results = database.child("users").child(user['localId']).set(data)
+        send_mail(
+            subject="ReNu Ireland - Register Confirmation",
+            message=f"Dear {name},\nThank you for registering your account with ReNu Ireland.\n\nRegards,\nReNu Ireland Team.",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[email]
+        )
         return render(request, 'accounts/login.html', {'message':message})
     except:
         message = 'Signup failed. Make sure email is unique and password is minimum 6 characters long.'

@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}ReNu Home{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href= "{% static 'css/carousel.css' %}">
+ <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 <div class="text-center container pt-5">
 
 </div>
@@ -16,7 +19,7 @@
   <br><br>
 <h3> Download soon!</h3>
   <br>
-  <p>Sign up below to receive emails about beta testing.</p>
+  <p>Register below to receive emails about beta testing.</p>
   <form id="beta_test" name="beta_test" action="/postbeta/" method="post">
   {% csrf_token %}
   <div class="input-group pb-3">
@@ -55,8 +58,11 @@
         <img class="img-fluid" src="{% static 'images/app-page-1.jpg' %}" alt="apphome" style="height: 40rem; width 40rem; border-radius: 25px;">
       </div>
        <!-- Control buttons -->
-      <button class="bten bten-next my_button">></button>
-      <button class="bten bten-prev my_button"><</button>
+      <button class="bten bten-next"><i class="fas fa-caret-right fa-2x"></i>
+</button>
+      <button class="bten bten-prev"><i class="fas fa-caret-left fa-2x"></i>
+
+</button>
     </div>  
 </div>
 </div>
