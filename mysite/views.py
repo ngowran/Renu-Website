@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from django.core.mail import send_mail
 from django.conf import settings
 import pyrebase
+import os
 
 config={
   "apiKey": "AIzaSyCRLXur7Aruh_EADjxKRsWtA-HY0P-G_ao",
@@ -24,7 +25,6 @@ firebase=pyrebase.initialize_app(config)
 authe = firebase.auth()
 database=firebase.database()
 
-
 def index(request):
     print(request.user)
     test1 = database.child('Renu').child('Key1').get().val()
@@ -36,6 +36,9 @@ def about(request):
 
 def sensor_data(request):
   sensor_data = database.child('sensor-2').child('Data').get().val()
+  data = str(sensor_data).split()
+  temp = data[0]
+  humid = data[2]
   return JsonResponse({"data":sensor_data})
 
 def contact(request):
@@ -57,6 +60,7 @@ def postreset(request):
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('sensor-2').child('Data').get().val()
+    data = str(sensor_data).split()
     info = database.child('users').child(request.session['localId']).child('username').get().val()
     return render(request, "accounts/profile.html", {"data":sensor_data, "info":info})
   else:
