@@ -34,6 +34,9 @@ def index(request):
 def about(request):
     return render(request, "about.html")
 
+def education(request):
+  return render(request, "education.html")
+
 def sensor_data(request):
   sensor_data = database.child('sensor-2').child('Data').get().val()
   return JsonResponse({"data":sensor_data})

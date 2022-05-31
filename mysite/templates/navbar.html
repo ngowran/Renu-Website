@@ -22,6 +22,10 @@
   {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
       </span>
 
+       <span class="nav-style">
+      <li class="nav-item nav-style"> {% url 'education' as education_url %}
+  {% if request.path == about_url %}Education{% else %}<a href="{% url 'education' %}">Education</a>{% endif %}</li>
+      </span>
      
       <li class="nav-item nav-style">{% url 'contact' as contact_url %}
         
