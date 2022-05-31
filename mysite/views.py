@@ -36,9 +36,6 @@ def about(request):
 
 def sensor_data(request):
   sensor_data = database.child('sensor-2').child('Data').get().val()
-  data = str(sensor_data).split()
-  temp = data[0]
-  humid = data[2]
   return JsonResponse({"data":sensor_data})
 
 def contact(request):
@@ -57,12 +54,27 @@ def postreset(request):
         message  = "Something went wrong, please check the email you provided is correct."
         return render(request, "accounts/reset.html", {"messsage":message})
 
+
 def profile(request):
   if request.session['uid']:
     sensor_data = database.child('sensor-2').child('Data').get().val()
     data = str(sensor_data).split()
+    temp = float(data[0])
+    humid = float(data[2])
+    humid_message = None
+    temp_message = None
+    if temp <= 50:
+      temp_message = "Its too cold in here,\n   please turn me!"
+    elif temp >= 70:
+      temp_message = "Its too warm in here,\n   please turn me!"
+    
+    if humid <= 40:
+      humid_message = "Its too dry in here, please add more water!"
+    elif humid >= 60:
+      humid_message = "Its too wet in here,\n   please add more greens/browns!"
+    
     info = database.child('users').child(request.session['localId']).child('username').get().val()
-    return render(request, "accounts/profile.html", {"data":sensor_data, "info":info})
+    return render(request, "accounts/profile.html", {"data":sensor_data, "info":info,"temp_message":temp_message, "humid_message":humid_message})
   else:
     message = "Sorry, you're not signed in"
     return render(request, 'login', {"message":message})

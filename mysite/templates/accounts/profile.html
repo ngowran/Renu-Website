@@ -16,6 +16,13 @@
 <h3> Your Compost Pile's Data </h3>
 <div id="sensor">
 <ul id="display-data"> {{data}}</ul>
+{% if temp_message != None %}
+<button class="btn my_button pt-2"><ul id="comp_message"> {{temp_message}}</ul></button>
+<br><br>
+{% endif %} 
+{% if humid_message != None %}
+<button class="btn my_button pt-2"><ul id="comp_message"> {{humid_message}}</ul></button>
+{% endif %}
 </div>
 <button class="btn my_button active" onclick='refresh()'>Update Sensor Data</button>
 </div>
@@ -38,7 +45,7 @@
       </ul>
     </div>
     <div class="col-md-6 p-2">
-      <h3 style=" text-decoration: underline;">Humidty </h3>
+      <h3 style=" text-decoration: underline;">Humidity </h3>
       <ul  style="text-align: left;">
         <li>Composting is most efficent between 40 - 60 % moisture content.</li>
         <li>Low mositure levels reduce oxygen levels in your compost, slowing aerobic bacteria growth.</li>

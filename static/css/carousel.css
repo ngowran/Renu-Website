@@ -27,11 +27,12 @@ body {
 
 .bten {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
+  width: 1rem;
+  height: 3rem;
   z-index: 8px;
   cursor: pointer;
-
+  border-radius: 50%;
+  border: none;
 }
 
 .bten:active {
