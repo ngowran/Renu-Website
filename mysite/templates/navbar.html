@@ -8,29 +8,40 @@
   {% if request.path == index_url %}<img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;">{% else %}<a href="{% url 'index' %}" ><img src="{% static 'images/renu_logo.jpg' %}" alt="renulogo" style="height: 5rem; width 5rem; border-radius: 50px;"></a>{% endif %}
     </div>
 
-  <!--briuh whats this -->
     <div class="col-lg-8 nav-style">
     <ul class="nav  navbar-nav navbar-expand nav-style links">
 
+      <div class="row text-center">
+        <div class="col-sm-3">
       <span class="nav-style">
       <li class="nav-item nav-style"> {% url 'index' as index_url %}
   {% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}" >Home</a>{% endif %}</li>
       </span>
+        </div>
 
+      <div class="col-sm-3">
       <span class="nav-style">
       <li class="nav-item nav-style"> {% url 'about' as about_url %}
   {% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</li>
       </span>
+      </div>
 
+        <div class="col-sm-3">
        <span class="nav-style">
       <li class="nav-item nav-style"> {% url 'education' as education_url %}
-  {% if request.path == about_url %}Education{% else %}<a href="{% url 'education' %}">Education</a>{% endif %}</li>
+  {% if request.path == education_url %}Education{% else %}<a href="{% url 'education' %}">Education     </a>{% endif %}</li>
       </span>
+        </div>
      
-      <li class="nav-item nav-style">{% url 'contact' as contact_url %}
+       <div class="col-sm-3">
+        <span>
+     <li class="nav-item nav-style pl-4">{% url 'contact' as contact_url %}
         
   {% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</li>
-   
+         </span>
+       </div>
+
+      </div>
     </ul>
     </div>
   
